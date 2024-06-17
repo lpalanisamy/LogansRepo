@@ -24,7 +24,7 @@ def process_url(url, writer):
         party = columns[2].text.strip()
         votes = columns[5].text.strip()
         percentage = columns[6].text.strip()
-        writer.writerow([state, constituency, candidate, party, votes, percentage])
+        writer.writerow([state, constituency, candidate, party, votes, percentage, url])
 
 # Read URLs from the urls.txt file
 with open('urls.txt', 'r') as url_file:
@@ -33,7 +33,7 @@ with open('urls.txt', 'r') as url_file:
 # Open the CSV file for writing
 with open('results.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['State', 'Constituency', 'Candidate', 'Party', 'Votes', 'Percentage'])
+    writer.writerow(['State', 'Constituency', 'Candidate', 'Party', 'Votes', 'Percentage', 'URL'])
 
     # Process each URL
     for url in urls:
